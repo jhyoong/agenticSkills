@@ -49,7 +49,7 @@ Any additional context, constraints, or dependencies between tasks.
 3. Each task MUST have concrete acceptance criteria that a reviewer can verify.
 4. Tasks MUST be ordered so dependencies are resolved sequentially — earlier tasks before later ones.
 5. Do NOT include test-writing as separate tasks. The developer subagent follows TDD and writes tests as part of each task.
-6. Keep the plan under 50 tasks. If the scope is larger, split into multiple plans.
+6. Keep the plan under 10 tasks. If the scope is larger, split into multiple plans.
 
 ## Workflow
 
