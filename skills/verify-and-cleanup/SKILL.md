@@ -1,45 +1,73 @@
-# Verifier Subagent Prompt
-
-Use this template when dispatching the verifier subagent via the Task tool. Replace all `{{placeholders}}` with actual values.
-
+---
+name: verify-and-cleanup
+description: Final verification of a completed plan implementation. Use after execute-plan-with-subagents finishes all tasks. Launches a verifier subagent per feature, loops with a developer subagent to fix issues, then proposes merge and cleanup.
 ---
 
-You are a verifier subagent. Your job is to verify that a completed task meets its spec in the final codebase state. You do NOT modify any code.
+# Verify and Cleanup
 
-## Task to Verify
+After all tasks in a plan pass their individual reviews, run a final end-to-end verification before proposing merge.
 
-**Title:** {{task_title}}
-**Description:** {{task_description}}
-**Files:** {{task_files}}
-**Acceptance Criteria:**
-{{acceptance_criteria}}
+## Workflow
 
-## Instructions
+### Step 1: Load the Plan
 
-1. Read each file listed above in its current state.
-2. Verify each acceptance criterion is met. State PASS or FAIL with a brief reason.
-3. Run the tests relevant to this task. Confirm they pass.
-4. Run the full test suite. Confirm no regressions.
-5. Check that the code is consistent with surrounding code style and patterns.
+Read the plan file from `.claude/plans/<plan-name>.md`. Extract all tasks and their acceptance criteria.
 
-## Output Format
+### Step 2: Verify Feature by Feature
+
+For each task in the plan, dispatch a verifier subagent using the prompt from `prompts/verifier.md`. The verifier checks:
+
+- Acceptance criteria are met in the final codebase state.
+- Tests exist, are meaningful, and pass.
+- No regressions in the broader test suite.
+- Code is consistent with the rest of the codebase.
+
+### Step 3: Handle Verification Results
+
+**If the verifier passes a task:** Move to the next task.
+
+**If the verifier finds issues:**
+
+1. Collect the verifier's report.
+2. Dispatch a developer subagent (same prompt template from `execute-plan-with-subagents/prompts/developer.md`) with the original task details PLUS the verifier's findings as feedback.
+3. After the developer fixes, re-dispatch the verifier for that task.
+4. Max 3 fix-verify loops per task. If still failing after 3, STOP and report to the user.
+
+### Step 4: Final Test Suite Run
+
+After all tasks pass verification, run the full test suite one final time:
+
+```bash
+# Use the project's test runner
+```
+
+If any tests fail, report the failures to the user and do NOT propose merge.
+
+### Step 5: Propose Merge and Cleanup
+
+If everything passes, present this to the user:
 
 ```
-## Verification: {{task_title}}
+## Verification Complete
 
-### Acceptance Criteria
-- [PASS/FAIL] Criterion 1: <reason>
-- [PASS/FAIL] Criterion 2: <reason>
+All tasks verified. Test suite passes.
 
-### Tests
-- [PASS/FAIL] Relevant tests pass: <reason>
-- [PASS/FAIL] Full test suite passes: <reason>
+**Ready to merge:**
+- Branch: {{branch-name}}
+- Worktree: .worktrees/{{branch-name}}
 
-### Code Quality
-- [PASS/FAIL] Consistent with codebase style: <reason>
-
-### Verdict: PASS or FAIL
-
-### Issues (if FAIL)
-<Specific description of what needs to be fixed>
+**Suggested commands (for you to run):**
+git checkout main
+git merge {{branch-name}}
+git worktree remove .worktrees/{{branch-name}}
+git branch -d {{branch-name}}
 ```
+
+Do NOT execute the merge or delete commands. The human does this.
+
+## Rules
+
+- Subagents run sequentially, one at a time.
+- The verifier subagent does not modify code — it only reports issues.
+- Max 3 fix-verify loops per task. Then stop and report.
+- Never merge or delete worktrees automatically. Always defer to the human.
