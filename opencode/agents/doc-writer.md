@@ -1,6 +1,7 @@
 ---
 description: Updates documentation to reflect code changes; keeps docs LLM-friendly and navigable.
 mode: primary
+model: llama.cpp/Qwen3-Coder-Next-GGUF:Q8_0
 temperature: 0.2
 max_steps: 30
 permission:

@@ -1,6 +1,7 @@
 ---
 description: Runs tasks, enforces per-task review loops (max 3), then runs final verification.
 mode: primary
+model: llama.cpp/Qwen3-Coder-Next-GGUF:Q8_0
 temperature: 0.1
 max_steps: 40
 permission:
@@ -17,7 +18,7 @@ permission:
     "developer": "allow"
     "reviewer": "allow"
     "verify": "allow"
-  edit: "deny"
+  edit: "ask"
   bash: "deny"
   doom_loop: "ask"
 ---
