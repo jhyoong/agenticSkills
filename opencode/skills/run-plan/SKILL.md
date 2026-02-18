@@ -14,6 +14,9 @@ Global rules (context-window aware)
 - For each task, only open that task spec and only the scoped files it lists.
 - All edits must be done by the implement subagent.
 
+Directory handling
+- If `.opencode/tasks/` does not exist, create it before launching subagents.
+
 Per-task loop (mandatory)
 For each task T###:
 1) IMPLEMENT
@@ -33,7 +36,7 @@ For each task T###:
      - FAIL 3 times consecutively → mark BLOCKED and move on.
 
 Final verification (mandatory)
-- After all tasks are PASS or BLOCKED, launch subagent: final-verify.
+- After all tasks are PASS or BLOCKED, launch subagent: verify.
 - If final-verify fails, create new corrective tasks (do not do ad-hoc edits in Orchestrator).
 
 Output

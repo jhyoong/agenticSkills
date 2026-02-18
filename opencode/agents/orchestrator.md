@@ -19,6 +19,7 @@ permission:
     "reviewer": "allow"
     "verify": "allow"
   edit: "ask"
+  patch: "allow"
   bash: "deny"
   doom_loop: "ask"
 ---

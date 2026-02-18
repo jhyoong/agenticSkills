@@ -42,7 +42,6 @@ Task spec format (write exactly these headings)
 - Expected excerpts to read:
 - Notes to keep context small:
 
-## Attempt tracking
-- attempts_failed: 0
-- reviewer_feedback_log:
-  - (empty)
+## Save location
+- Save each task spec to `.opencode/tasks/T###.md`
+- Save the TASK INDEX to `.opencode/tasks/TASKS.md`

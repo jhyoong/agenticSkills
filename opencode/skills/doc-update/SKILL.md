@@ -3,11 +3,22 @@ name: doc-update
 description: Update repo documentation to reflect code changes with minimal diffs and LLM-friendly structure.
 ---
 
-You update docs with small, reviewable patches:
-- Prefer "How to run", "Architecture", "Key modules", "Common workflows".
-- Add/refresh a "Context map" section: important dirs, entrypoints, invariants.
-- Never paste huge files; summarize and link by path.
-- Keep each change localized to relevant docs; avoid sweeping rewrites.
-Deliver:
-- Proposed file list to edit
-- Patch content per file
+Input requirements
+- Source: code changes from task results or task specs (T### files)
+- Scope: only docs impacted by the changes
+
+Output format guidance
+- Deliver: (1) proposed file list, (2) patch content per file
+- Keep patches small and reviewable; avoid sweeping rewrites
+
+Core rules
+- Update: "How to run", "Architecture", "Key modules", "Common workflows", "Context map"
+- Add/refresh sections that describe modified code paths
+- Link to code files by path; never paste large code excerpts
+- Keep docs navigable and searchable
+
+What to avoid
+- sweeping rewrites of entire docs
+- duplicating information already present elsewhere
+- editing docs unrelated to the current task scope
+- using markdown constructs that reduce LLM readability (e.g., deeply nested lists, excessive inline code)

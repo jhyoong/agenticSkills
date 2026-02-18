@@ -13,7 +13,9 @@ permission:
   skill: "allow"
   edit: "ask"
   bash: "deny"
-  task: "ask"
+  task:
+    "*": "deny"
+    "explorer": "allow"
 ---
 
 Use skill(plan-breakdown).
