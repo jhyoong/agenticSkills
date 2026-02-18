@@ -1,7 +1,7 @@
 ---
 description: Implements exactly one task spec with minimal scoped edits; no orchestration.
 mode: subagent
-model: llama.cpp/Qwen3-Coder-Next-GGUF:Q8_0
+model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 hidden: false
 temperature: 0.1
 max_steps: 40

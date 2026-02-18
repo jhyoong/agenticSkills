@@ -1,7 +1,7 @@
 ---
 description: Breaks large plans into small executable task specs (T###) sized for 64k/128k contexts.
 mode: primary
-model: llama.cpp/Qwen3-Coder-Next-GGUF:Q8_0
+model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.2
 max_steps: 30
 permission:

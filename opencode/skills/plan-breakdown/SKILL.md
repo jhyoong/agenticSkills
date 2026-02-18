@@ -43,5 +43,5 @@ Task spec format (write exactly these headings)
 - Notes to keep context small:
 
 ## Save location
-- Save each task spec to `.opencode/tasks/T###.md`
-- Save the TASK INDEX to `.opencode/tasks/TASKS.md`
+- Save each task spec to `opencode/tasks/T###.md`
+- Save the TASK INDEX to `opencode/tasks/TASKS.md`

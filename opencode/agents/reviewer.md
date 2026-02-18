@@ -1,7 +1,7 @@
 ---
 description: Reviews one task attempt against acceptance checks; runs minimal tests/commands; no code changes.
 mode: subagent
-model: llama.cpp/Qwen3-Coder-Next-GGUF:Q8_0
+model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 hidden: true
 temperature: 0.0
 max_steps: 25

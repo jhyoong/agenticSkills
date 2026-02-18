@@ -1,7 +1,7 @@
 ---
 description: Verifies completed work by running tests/linters and checking acceptance criteria; no code changes.
 mode: subagent
-model: llama.cpp/Qwen3-Coder-Next-GGUF:Q8_0
+model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.0
 max_steps: 30
 permission:
