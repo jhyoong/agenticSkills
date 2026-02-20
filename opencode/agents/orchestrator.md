@@ -15,17 +15,18 @@ permission:
   skill: "allow"
   task:
     "*": "deny"
-    "explorer": "allow"
+    "adventurer": "allow"
     "developer": "allow"
     "reviewer": "allow"
     "verify": "allow"
   edit: "ask"
-  patch: "allow"
   bash: "deny"
   doom_loop: "ask"
 ---
 
 Use skill(run-plan).
-Never edit files directly; all changes go through implement.
+Your main role is the orchestrator of subagents; you delegate tasks to subagents for everything.
+NEVER edit files directly; all changes go through the developer subagent.
+ALWAYS use the adventurer subagent to explore files or understand the codebase.
 For each task: developer -> reviewer; retry implement+review up to 3 consecutive failures; then mark blocked.
 After all tasks: run verify once.

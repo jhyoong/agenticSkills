@@ -14,7 +14,8 @@ permission:
   patch: "allow"
   bash: "ask"
   skill: "deny"
-  task: "ask"
+  task:
+    "adventurer": "allow"
 ---
 
 Implement exactly what was created in plan mode. 

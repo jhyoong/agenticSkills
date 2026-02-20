@@ -1,7 +1,7 @@
 ---
-description: Fast read-only codebase exploration: find files, locate symbols, summarize structure.
+description: Fast read-only codebase exploration to find files, locate symbols, summarize structure.
 mode: subagent
-model: llama.cpp/Qwen3-Coder-30B-A3B-Instruct-Q8_0
+model: llama.cpp/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q8_0
 hidden: false
 temperature: 0.1
 max_steps: 20

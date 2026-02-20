@@ -16,7 +16,7 @@ agenticSkills/
 │   └── agents/        # Agent definitions
 │       ├── developer.md
 │       ├── reviewer.md
-│       ├── explorer.md
+│       ├── adventurer.md
 │       ├── verify.md
 │       ├── orchestrator.md
 │       ├── task-maker.md
