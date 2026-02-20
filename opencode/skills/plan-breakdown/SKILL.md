@@ -29,6 +29,10 @@ Task spec format (write exactly these headings)
 - Allowed: <paths/globs>
 - Avoid touching: <paths/globs>
 
+## Testing Strategy
+- Test file locations: <where to save the new tests>
+- Behaviors to assert: <list of specific edge cases or boundary conditions to test>
+
 ## Read hints
 - Grep queries:
 - Key entrypoints / symbols:
@@ -45,5 +49,11 @@ Task spec format (write exactly these headings)
 - Notes to keep context small:
 
 ## Save location
-- Save each task spec to `opencode/tasks/T###.md`
-- Save the TASK INDEX to `opencode/tasks/TASKS.md`
+- Save ALL task specs into a single `opencode/tasks/TASKS.md`
+- Format each task as a level-2 header: `## T###: <title>`
+- Separate tasks with `---`
+- DO NOT create individual T###.md files
+- Prepend the file with a lean index table:
+  | ID | Title | Status |
+  |----|-------|--------|
+  | T001 | ... | [ ] |

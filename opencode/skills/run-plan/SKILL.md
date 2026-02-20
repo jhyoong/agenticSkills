@@ -20,30 +20,37 @@ Directory handling
 - If `opencode/tasks/` does not exist, create it before launching subagents.
 
 Per-task loop (MANDATORY: USE THE TODO tools)
-For each task T###:
-1) IMPLEMENT
+For each task T### in TASKS.md index table:
+1) EXTRACT the task section (grep between `## T###:` and the next `## T` header). Pass this text directly to subagents.
+
+2) TEST-WRITE (TDD Phase 1)
+   - Launch subagent: test-writer
+   - Provide: extracted task spec.
+   - Capture the output (test file paths and run commands).
+
+3) IMPLEMENT (TDD Phase 2)
    - Launch subagent: developer
-   - Provide: task spec, attempt number, and any prior reviewer feedback (only the latest + a short history).
-2) REVIEW
+   - Provide: extracted task spec + the output from the test-writer + attempt number + prior reviewer feedback.
+   - Instruct the developer to implement the code until the tests pass.
+
+4) REVIEW (TDD Phase 3)
    - Launch subagent: reviewer
-   - Provide: task spec + changed-file list (or diff summary) + acceptance checks.
-3) If review PASS:
-   - Mark task as passed (append a short "Result" note to the task file or orchestrator log).
-   - Move to next task.
-4) If review FAIL:
-   - Increment attempts_failed in the task spec (or record in orchestrator log).
-   - Append reviewer feedback to reviewer_feedback_log.
-   - Retry IMPLEMENT+REVIEW until:
-     - PASS, or
-     - FAIL 3 times consecutively → mark BLOCKED and move on.
+   - Provide: extracted task spec + changed-file list + test commands.
+   - Instruct the reviewer to verify the code quality AND confirm the tests pass.
+
+5) PASS / FAIL handling
+   - PASS: update TASKS.md status to `[x]` and move to next task.
+   - FAIL: increment failures, append feedback. Retry IMPLEMENT (step 3) -> REVIEW (step 4). If it fails 3 times consecutively, mark `[BLOCKED]` and move on.
 
 Final verification (mandatory)
 - After all tasks are PASS or BLOCKED, launch subagent: verify.
 - If verify fails, create new corrective tasks (do not do ad-hoc edits in Orchestrator).
 
 Example:
+[] Initiate Task 1 with test-writer subagent
 [] Delegate Task 1 to developer subagent
 [] Review Task 1 with reviewer subagent
+[] Initiate Task 2 with test-writer subagent
 [] Delegate Task 2 to developer subagent
 [] Review Task 2 with reviewer subagent
 [] Launch verify subagent to check all work

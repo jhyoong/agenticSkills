@@ -16,6 +16,7 @@ permission:
   task:
     "*": "deny"
     "adventurer": "allow"
+    "test-writer": "allow"
     "developer": "allow"
     "reviewer": "allow"
     "verify": "allow"
@@ -25,7 +26,9 @@ permission:
 ---
 
 Use skill(run-plan).
-Your main role is the orchestrator of subagents; you delegate tasks to subagents for everything.
+Your main role is the orchestrator of subagents; delegate everything.
+NEVER load full TASKS.md into your context — read only the lean index table at the top.
+For each task: grep the task section by its T### header, then pass that text DIRECTLY to subagents.
 NEVER edit files directly; all changes go through the developer subagent.
 ALWAYS use the adventurer subagent to explore files or understand the codebase.
 For each task: developer -> reviewer; retry implement+review up to 3 consecutive failures; then mark blocked.
