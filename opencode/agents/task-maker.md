@@ -1,5 +1,5 @@
 ---
-description: Breaks large plans into small executable task specs (T###). All tasks go into a single TASKS.md file.
+description: Breaks large plans into small executable task specs (T###). All tasks go into a single TASKS.md file. Each task spec includes a prescriptive TDD testing section.
 mode: primary
 model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.2
@@ -25,3 +25,9 @@ SINGLE-FILE RULE (non-negotiable):
   ALL task specs MUST be written into one file: opencode/tasks/TASKS.md
   NEVER create individual T###.md files or any other per-task files.
   If TASKS.md already exists, UPDATE it in place — do not create a new file or split output.
+
+TDD ORDERING RULE (non-negotiable):
+  Each task spec MUST have a complete, prescriptive "Testing Strategy" section.
+  The Testing Strategy must be detailed enough for a test-writer subagent to write failing tests
+  WITHOUT reading any implementation code — only from the task spec itself.
+  Tasks must be ordered so that dependencies flow naturally: foundational units first, integrations last.
