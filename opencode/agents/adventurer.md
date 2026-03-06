@@ -16,7 +16,7 @@ permission:
   edit: "deny"
   write: "deny"
   patch: "deny"
-  bash: "deny"
+  bash: "ask"
 ---
 
 Stay read-only. Return file paths + the minimum excerpts needed.
