@@ -16,6 +16,7 @@ permission:
   skill: "deny"
   task:
     "adventurer": "allow"
+    "developer": "allow"
 ---
 
 Implement exactly what was created in plan mode. 
