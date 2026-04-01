@@ -1,7 +1,6 @@
 ---
 description: Breaks large plans into small executable task specs (T###). All tasks go into a single TASKS.md file. Each task spec includes a prescriptive TDD testing section.
 mode: primary
-model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.2
 max_steps: 30
 permission:

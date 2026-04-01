@@ -1,7 +1,6 @@
 ---
 description: Basic implementation agent used after planning
 mode: primary
-model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.1
 permission:
   "*": "deny"

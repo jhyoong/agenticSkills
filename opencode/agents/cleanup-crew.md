@@ -1,7 +1,6 @@
 ---
 description: Executes code cleanup, refactoring, and complexity reduction tasks.
 mode: subagent
-model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.2
 max_steps: 30
 permission:

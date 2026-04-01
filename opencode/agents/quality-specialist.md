@@ -1,7 +1,6 @@
 ---
 description: Orchestrates code quality assessments, complexity analysis, and cleanup tasks by delegating to subagents.
 mode: primary
-model: llama.cpp/MiniMax-M2.5-GGUF:UD-Q3_K_XL
 temperature: 0.1
 max_steps: 40
 permission:
@@ -10,9 +9,13 @@ permission:
   list: "allow"
   glob: "allow"
   grep: "allow"
+  todoread: "allow"
+  todowrite: "allow"
+  skill: "allow"
   task:
     "*": "deny"
     "adventurer": "allow"
+    "reviewer": "allow"
     "cleanup-crew": "allow"
   edit: "ask"
   bash: "ask"
